@@ -1,121 +1,533 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مكتبة إياد ونيدال - EYAD & NEDAL BOOKSTORE</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class'}</script>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-*{font-family:'Cairo',sans-serif}
-@keyframes goldMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-body.gold-bg{
-  background: url('https://raw.githubusercontent.com/oa4172724-del/eyad-nedal-library/main/background%20.jpg.jpeg') center/cover fixed no-repeat;
-}
-body.gold-bg::before{
-  content:'';position:fixed;inset:0;
-  background: linear-gradient(120deg, rgba(255,251,235,0.88), rgba(255,255,255,0.92), rgba(254,243,199,0.88));
-  background-size:400% 400%;animation:goldMove 15s ease infinite;
-  z-index:-1;
-}
-.dark body.gold-bg::before{
-  background: linear-gradient(120deg, rgba(15,23,42,0.92), rgba(12,42,90,0.9), rgba(0,0,0,0.9));
-  background-size:400% 400%;animation:goldMove 15s ease infinite;
-}
-.cat-card{transition:.3s} .cat-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,.15);border-color:#d4af37}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مكتبة إياد ونيدال</title>
+  <meta name="description" content="مكتبة إياد ونيدال للأدوات المدرسية والمكتبية بأسعار مميزة.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      background: #fffaf0;
+      color: #172033;
+      transition: background .3s, color .3s;
+    }
+
+    body.dark {
+      background: #0f172a;
+      color: #f8fafc;
+    }
+
+    .site-bg {
+      background-image:
+        linear-gradient(rgba(255,250,240,.87), rgba(255,255,255,.91)),
+        url('./background.png');
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    body.dark .site-bg {
+      background-image:
+        linear-gradient(rgba(15,23,42,.91), rgba(15,23,42,.94)),
+        url('./background.png');
+    }
+
+    .gold { color: #b8860b; }
+
+    .gold-button {
+      background: linear-gradient(135deg, #f5d779, #c89b27);
+      color: #172033;
+      transition: transform .2s, opacity .2s;
+    }
+
+    .gold-button:hover {
+      transform: translateY(-2px);
+      opacity: .92;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,.94);
+      border: 1px solid #ead9a2;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.07);
+      transition: transform .2s;
+    }
+
+    .product-card:hover { transform: translateY(-4px); }
+
+    body.dark .product-card,
+    body.dark .panel {
+      background: rgba(30,41,59,.96);
+      border-color: #475569;
+      color: #f8fafc;
+    }
+
+    body.dark input,
+    body.dark textarea,
+    body.dark select {
+      background: #1e293b;
+      color: white;
+      border-color: #475569;
+    }
+
+    .product-emoji {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      font-size: 64px;
+      background: linear-gradient(135deg,#fff8df,#fef3c7);
+      border-radius: 14px;
+      margin-bottom: 12px;
+    }
+
+    .category-btn {
+      border: 1px solid #d6b65b;
+      border-radius: 999px;
+      padding: 8px 16px;
+      white-space: nowrap;
+      background: white;
+      color: #433519;
+      cursor: pointer;
+    }
+
+    .category-btn.active {
+      background: #c89b27;
+      color: #111827;
+      font-weight: 800;
+    }
+
+    body.dark .category-btn {
+      background: #1e293b;
+      color: white;
+    }
+
+    body.dark .category-btn.active {
+      background: #c89b27;
+      color: #111827;
+    }
+
+    .section-title {
+      border-right: 5px solid #c89b27;
+      padding-right: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
-<body class="gold-bg dark:bg-[#0f172a] min-h-screen">
 
-<!-- هيدر -->
-<header class="bg-[#0c2a5a]/95 dark:bg-black/90 backdrop-blur text-white sticky top-0 z-50 border-b-2 border-[#d4af37]">
-  <div class="max-w-[1400px] mx-auto px-3 py-2.5 flex justify-between items-center">
-    <div class="flex gap-3 items-center">
-      <button onclick="toggleDark()" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" id="darkBtn">🌙</button>
-      <a href="https://wa.me/201025448898" class="bg-[#16a34a] px-4 py-2 rounded-full text-sm font-bold">01025448898</a>
-      <div class="relative"><i class="fa-solid fa-cart-shopping text-xl"></i><span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span></div>
+<body>
+  <header class="sticky top-0 z-50 bg-slate-950 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+      <a href="#" class="text-xl sm:text-2xl font-black text-yellow-400">
+        ✨ مكتبة إياد ونيدال
+      </a>
+
+      <nav class="flex items-center gap-3 text-sm sm:text-base">
+        <a href="#products" class="hover:text-yellow-400">المنتجات</a>
+        <a href="#order" class="hover:text-yellow-400">اطلب الآن</a>
+        <button id="themeButton" class="border border-yellow-400 rounded-lg px-3 py-2" type="button">
+          🌙 الوضع الليلي
+        </button>
+        <button id="cartButton" class="gold-button rounded-lg px-3 py-2 font-bold" type="button">
+          🛒 السلة (<span id="cartCount">0</span>)
+        </button>
+      </nav>
     </div>
-    <h1 class="text-[22px] font-black text-[#fbbf24]">📖 مكتبة إياد ونيدال</h1>
-  </div>
-</header>
+  </header>
 
-<div id="fridayOffer" class="hidden bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 text-black text-center py-2 font-black border-b border-[#d4af37]"></div>
+  <main class="site-bg min-h-screen">
+    <section class="max-w-7xl mx-auto px-4 pt-8 pb-10">
+      <div class="panel bg-white/90 rounded-3xl p-5 sm:p-8 border border-yellow-300 shadow-xl grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <span class="inline-block bg-yellow-100 text-yellow-900 px-4 py-1 rounded-full text-sm font-bold mb-4">
+            كل مستلزماتك في مكان واحد
+          </span>
 
-<!-- بانر باللوجو الذهبي -->
-<section class="relative py-10 text-center">
-  <div class="max-w-[900px] mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur rounded-[30px] p-6 border-2 border-[#d4af37] shadow-2xl">
-    <img src="https://raw.githubusercontent.com/oa4172724-del/eyad-nedal-library/main/background%20.jpg.jpeg" class="w-full max-w-[650px] mx-auto rounded-2xl shadow-lg border border-[#d4af37]">
-    <h2 class="mt-4 text-2xl font-black text-[#0c2a5a] dark:text-[#fbbf24]">كل مستلزمات المدرسة في مكان واحد</h2>
-    <p class="text-[13px] text-gray-600 dark:text-gray-300 mt-1"> أقلام روتو - بريما -  - كراسات - مساطر - بأسعار من 5 جنيه</p>
-    <div class="mt-4 bg-white dark:bg-slate-800 rounded-full flex items-center px-4 py-2.5 max-w-[500px] mx-auto shadow border">
-      <i class="fa-solid fa-magnifying-glass text-[#d4af37]"></i>
-      <input id="searchInput" oninput="filterProducts()" placeholder="ابحث عن منتج أو قسم..." class="w-full outline-none text-sm mr-3 bg-transparent">
-    </div>
-  </div>
-  <!-- شريط المميزات -->
-  <div class="flex justify-center mt-[-20px] relative z-10">
-    <div class="bg-[#0c2a5a] text-white rounded-full px-6 py-3 flex gap-6 text-[11px] font-bold shadow-2xl border border-[#d4af37]">
-      <span>🚚 توصيل سريع</span><span>✅ جودة عالية</span><span>💰 أسعار مناسبة</span><span>📞 خدمة مميزة</span>
-    </div>
-  </div>
-</section>
+          <h1 class="text-3xl sm:text-5xl font-black leading-tight mb-4">
+            أهلاً بيك في <span class="gold">مكتبة إياد ونيدال</span>
+          </h1>
 
-<!-- الأقسام - أيقونات حقيقية -->
-<section class="max-w-[1400px] mx-auto px-3 pb-6">
-  <h2 class="text-center text-xl font-black text-[#0c2a5a] dark:text-white mb-4">◫ تسوّق حسب القسم</h2>
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-    <button onclick="showCat('رصاص')" class="cat-card bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30"><img src="https://th.bing.com/th/id/OIP.KckUgaEgE76X-QsjiJk1cwHaHa?w=193&h=193&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" class="h-[70px] mx-auto object-contain"><div class="font-bold text-[12px] mt-2 dark:text-white">أقلام رصاص</div></button>
-    <button onclick="showCat('جاف')" class="cat-card bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30"><img src="https://th.bing.com/th/id/OIP.xlq_MePfABGMC2vy0nUmdQHaGb?w=208&h=181&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" class="h-[70px] mx-auto object-contain"><div class="font-bold text-[12px] mt-2 dark:text-white">روتو ROTO - 5ج</div></button>
-    <button onclick="showCat('بريما')" class="cat-card bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30"><img src="https://https://th.bing.com/th/id/OIP.oPMy9G8rwz23SS15SYx7vQAAAA?w=187&h=333&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" class="h-[70px] mx-auto object-contain"><div class="font-bold text-[12px] mt-2 dark:text-white">بريما PRIMA - 5ج</div></button>
-    <button onclick="showCat('مسطرة')" class="cat-card bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30"><img src="https://https://th.bing.com/th/id/OIP.cw908GRLS-lGgFEZ6VswUwHaHc?w=174&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" class="h-[70px] mx-auto object-contain"><div class="font-bold text-[12px] mt-2 dark:text-white">مسطرة - 5ج</div></button>
-    <button onclick="showCat('كراسه سلك ك')" class="cat-card bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30"><img src="https://https://th.bing.com/th/id/OIP.B_OIc_ApiJdY7TUktThf4AHaJ4?w=161&h=213&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" class="h-[70px] mx-auto object-contain"><div class="font-bold text-[12px] mt-2 dark:text-white">كراريس سلك - 15جv></di</button>
-    <button onclick="showCat('كوريكتور')" class="cat-card bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30"><img src="data:image/,UklGRtwUAABXRUJQVwebp;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" class="h-[70px] mx-auto object-contain"><div class="font-bold text-[12px] mt-2 dark:text-white">كوريكتور شريط - 25ج</div></button>
-   <button onclick="showCat('هايلايتر')" class="cat-card bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30"><img src="https://data:image/webp;base64,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 30ج</di</button>
-  </div>
-</section>
+          <p class="text-base sm:text-lg leading-8 mb-6">
+            أدوات مدرسية ومكتبية متنوعة، أقلام وكشاكيل وكوريكتور،
+            بأسعار مناسبة وجودة مميزة.
+          </p>
 
-<!-- المنتجات -->
-<section class="max-w-[1400px] mx-auto px-3 pb-12">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="productsGrid">
-    <div class="prod bg-white/95 dark:bg-slate-800/95 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30 shadow" data-name="روتو"><img src="https://m.media-amazon.com/images/I/61Zt5v5jAFL._AC_SL1000_.jpg" class="h-[90px] mx-auto"><p class="font-bold text-[13px] dark:text-white mt-2">روتو ROTO أزرق</p><p class="text-[11px]">5 جنيه</p><button onclick="addToCart('روتو ازرق',5)" class="w-full mt-2 bg-[#0c2a5a] text-white py-1.5 rounded-full text-[11px]">أضف للسلة - 5ج</button></div>
-    <div class="prod bg-white/95 dark:bg-slate-800/95 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30 shadow" data-name="بريما"><img src="https://m.media-amazon.com/images/I/71p+7r2JcJL._AC_SL1500_.jpg" class="h-[90px] mx-auto"><p class="font-bold text-[13px] dark:text-white mt-2">بريما PRIMA</p><p class="text-[11px]">5 جنيه</p><button onclick="addToCart('بريما',5)" class="w-full mt-2 bg-[#0c2a5a] text-white py-1.5 rounded-full text-[11px]">أضف للسلة - 5ج</button></div>
-    <div class="prod bg-white/95 dark:bg-slate-800/95 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30 shadow" data-name="كراسة"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200" class="h-[90px] mx-auto"><p class="font-bold text-[13px] dark:text-white mt-2">كراسة سلك</p><p class="text-[11px]">15 جنيه</p><button onclick="addToCart('كراسة سلك',15)" class="w-full mt-2 bg-[#0c2a5a] text-white py-1.5 rounded-full text-[11px]">أضف للسلة - 15ج</button></div>
-    <div class="prod bg-white/95 dark:bg-slate-800/95 backdrop-blur rounded-xl p-3 border border-[#d4af37]/30 shadow" data-name="كوريكتور"><img src="https://https://th.bing.com/th/id/OIP.6zeVyfs6rPY9y9gVufYckwHaHa?w=222&h=220&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" class="h-[90px] mx-auto"><p class="font-bold text-[13px] dark:text-white mt-2">كوريكتور شريط</p><p class="text-[11px]">25 جنيه</p><button onclick="addToCart('كوريكتور شريط',25)" class="w-full mt-2 bg-[#0c2a5a] text-white py-1.5 rounded-full text-[11px]">أضف للسلة - 25ج</button></div>
-  </div>
-</section>
+          <div class="flex gap-3 flex-wrap">
+            <a href="#products" class="gold-button rounded-xl px-6 py-3 font-extrabold">
+              اكتشف المنتجات
+            </a>
+            <a href="#order" class="rounded-xl px-6 py-3 border-2 border-yellow-600 font-bold">
+              اطلب دلوقتي
+            </a>
+          </div>
 
-<div class="bg-[#0c2a5a] dark:bg-black text-white text-center py-5 rounded-t-[40px] border-t-2 border-[#d4af37]"><p class="font-bold text-sm">✨ {made by O.M.E} EYAD & NEDAL BOOKSTORE - البيع اونلاين 01025448898  ✨</p></div>
+          <div class="grid grid-cols-3 gap-3 mt-8 text-center">
+            <div class="bg-yellow-50 rounded-xl p-3">
+              <div class="text-2xl">✏️</div>
+              <div class="font-bold text-sm text-slate-800">أقلام متنوعة</div>
+            </div>
+            <div class="bg-yellow-50 rounded-xl p-3">
+              <div class="text-2xl">📒</div>
+              <div class="font-bold text-sm text-slate-800">كشاكيل</div>
+            </div>
+            <div class="bg-yellow-50 rounded-xl p-3">
+              <div class="text-2xl">💰</div>
+              <div class="font-bold text-sm text-slate-800">أسعار مناسبة</div>
+            </div>
+          </div>
+        </div>
 
-<!-- السلة -->
-<div id="cartBox" class="fixed bottom-0 left-0 right-0 md:bottom-4 md:right-4 md:w-[430px] bg-white dark:bg-slate-900 dark:text-white shadow-2xl rounded-t-[24px] md:rounded-2xl p-5 border-2 border-[#d4af37] z-50 hidden max-h-[90vh] overflow-auto">
-  <div class="flex justify-between"><h3 class="font-black">السلة (<span id="count">0</span>)</h3><button onclick="document.getElementById('cartBox').classList.add('hidden')">✕</button></div>
-  <div id="cartItems" class="mt-2 text-[12px]"></div>
-  <div class="mt-4 bg-amber-50 dark:bg-slate-800 p-3 rounded-xl border border-[#d4af37]/30">
-    <input id="custName" placeholder="الاسم *" class="w-full p-2.5 rounded-lg border text-sm mb-2 dark:bg-slate-700">
-    <input id="custPhone" placeholder="رقم الهاتف *" class="w-full p-2.5 rounded-lg border text-sm mb-2 dark:bg-slate-700">
-    <input id="custAddress" placeholder="العنوان - الحامول *" class="w-full p-2.5 rounded-lg border text-sm mb-2 dark:bg-slate-700">
-    <div class="flex gap-2"><label class="flex-1 border rounded-lg p-2 text-center"><input type="radio" name="pay" value="كاش" checked> 💵 كاش</label><label class="flex-1 border rounded-lg p-2 text-center"><input type="radio" name="pay" value="انستا باي"> 📱 انستا باي</label></div>
-    <p id="instaInfo" class="hidden mt-2 text-[11px] bg-purple-50 p-2 rounded-lg">انستا باي: <b>01025448898</b></p>
-  </div>
-  <div class="mt-3 border-t pt-2 text-sm"><div class="flex justify-between"><span>المجموع:</span><span id="subtotal">0 ج</span></div><div id="discountRow" class="hidden flex justify-between text-green-600 font-bold"><span>خصم الجمعة 2%:</span><span id="discount">0 ج</span></div><div class="flex justify-between font-black text-[16px] mt-1"><span>الإجمالي:</span><span id="total">0 ج</span></div></div>
-  <button onclick="sendCart()" class="w-full mt-4 bg-[#25D366] text-white py-3 rounded-full font-black shadow">إرسال واتساب 🚀</button>
-</div>
+        <div>
+          <img
+            src="./background.png"
+            alt="خلفية مكتبة إياد ونيدال"
+            class="w-full rounded-2xl shadow-lg border-2 border-yellow-400"
+            onerror="this.style.display='none';document.getElementById('imageFallback').style.display='flex';"
+          >
+          <div id="imageFallback" style="display:none" class="min-h-64 rounded-2xl bg-yellow-100 items-center justify-center text-8xl">
+            🏫📚✏️
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script>
-function toggleDark(){document.documentElement.classList.toggle('dark');let d=document.documentElement.classList.contains('dark');localStorage.setItem('theme',d?'dark':'light');document.getElementById('darkBtn').innerText=d?'☀️':'🌙'}
-if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');document.getElementById('darkBtn').innerText='☀️'}
-function getPromoFriday(y){let s=y*9973,r=s%52,j=new Date(y,0,1),f=(5-j.getDay()+7)%7,n=new Date(y,0,1+f),p=new Date(n);p.setDate(n.getDate()+r*7);return p}
-let today=new Date(),promo=getPromoFriday(today.getFullYear()),isFriday=today.toDateString()===promo.toDateString();
-if(isFriday){document.getElementById('fridayOffer').classList.remove('hidden');document.getElementById('fridayOffer').innerText='🎉 الجمعة العشوائية - خصم 2% اليوم 🎉'}
-let cart=[],subtotal=0;
-function addToCart(n,p){cart.push({name:n,price:p});subtotal+=p;document.getElementById('cartBox').classList.remove('hidden');document.getElementById('count').innerText=cart.length;document.getElementById('cartCount').innerText=cart.length;updateCart()}
-function updateCart(){let d=isFriday?subtotal*.02:0,t=subtotal-d;document.getElementById('subtotal').innerText=subtotal+' ج';document.getElementById('total').innerText=t.toFixed(0)+' ج';if(isFriday){document.getElementById('discountRow').classList.remove('hidden');document.getElementById('discount').innerText='-'+d.toFixed(0)+' ج'}let h='';cart.forEach(i=>h+=`• ${i.name} - ${i.price}ج<br>`);document.getElementById('cartItems').innerHTML=h}
-function sendCart(){let name=document.getElementById('custName').value,phone=document.getElementById('custPhone').value,address=document.getElementById('custAddress').value;if(!name||!phone||!address){alert('اكمل البيانات');return}let pay=document.querySelector('input[name="pay"]:checked').value;let msg=`أوردر جديد%0A👤 ${name}%0A📞 ${phone}%0A📍 ${address}%0A%0A`;cart.forEach(i=>msg+=`${i.name} - ${i.price}ج%0A`);let d=isFriday?subtotal*.02:0,t=subtotal-d;msg+=`%0Aالإجمالي: ${t.toFixed(0)}ج%0Aالدفع: ${pay}`;window.open(`https://wa.me/201025448898?text=${msg}`,'_blank')}
-function showCat(k){document.getElementById('productsGrid').scrollIntoView({behavior:'smooth'});filterProducts(k)}
-function filterProducts(k){let q=(k||document.getElementById('searchInput').value||'').toLowerCase();document.querySelectorAll('.prod').forEach(el=>{el.style.display=el.dataset.name.toLowerCase().includes(q)||q===''?'block':'none'})}
-document.querySelectorAll('input[name="pay"]').forEach(r=>{r.addEventListener('change',e=>{document.getElementById('instaInfo').classList.toggle('hidden',e.target.value!=='انستا باي')})});
-</script>
+    <section id="products" class="max-w-7xl mx-auto px-4 pb-12">
+      <div class="flex items-center justify-between gap-4 flex-wrap mb-6">
+        <h2 class="section-title text-2xl sm:text-3xl font-black">منتجات المكتبة</h2>
+        <span class="text-sm">اختار المنتج وضيفه للسلة 🛍️</span>
+      </div>
+
+      <div class="flex gap-2 overflow-x-auto pb-4 mb-4">
+        <button class="category-btn active" data-category="الكل">الكل</button>
+        <button class="category-btn" data-category="أقلام رصاص">أقلام رصاص</button>
+        <button class="category-btn" data-category="أقلام جاف">أقلام جاف</button>
+        <button class="category-btn" data-category="فلوماستر">فلوماستر</button>
+        <button class="category-btn" data-category="كوريكتور">كوريكتور</button>
+        <button class="category-btn" data-category="كشاكيل">كشاكيل</button>
+        <button class="category-btn" data-category="أدوات مدرسية">أدوات مدرسية</button>
+      </div>
+
+      <div class="mb-6">
+        <input id="searchInput" type="search" placeholder="🔍 ابحث عن منتج..."
+          class="w-full p-3 rounded-xl border border-yellow-300 outline-none focus:ring-2 focus:ring-yellow-500">
+      </div>
+
+      <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <section id="cartSection" class="max-w-7xl mx-auto px-4 pb-10 hidden">
+      <div class="panel bg-white/95 border border-yellow-300 rounded-2xl p-5 shadow-lg">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-2xl font-black">🛒 سلة المشتريات</h2>
+          <button id="closeCart" class="text-red-500 font-bold" type="button">إغلاق ✕</button>
+        </div>
+        <div id="cartItems" class="space-y-3"></div>
+        <div class="border-t border-yellow-300 mt-5 pt-4 flex justify-between text-xl font-black">
+          <span>الإجمالي:</span>
+          <span><span id="cartTotal">0</span> جنيه</span>
+        </div>
+        <a href="#order" class="gold-button inline-block mt-4 px-6 py-3 rounded-xl font-bold">
+          إكمال الطلب
+        </a>
+      </div>
+    </section>
+
+    <section id="order" class="max-w-4xl mx-auto px-4 pb-14">
+      <div class="panel bg-white/95 border border-yellow-300 rounded-3xl p-5 sm:p-8 shadow-xl">
+        <h2 class="section-title text-2xl sm:text-3xl font-black mb-3">تأكيد الطلب</h2>
+        <p class="mb-6">اكتب بياناتك عشان تجهز رسالة الطلب على واتساب.</p>
+
+        <form id="orderForm" class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="customerName" class="block font-bold mb-2">الاسم بالكامل</label>
+            <input id="customerName" required maxlength="100"
+              class="w-full p-3 border rounded-xl outline-none" placeholder="اكتب اسمك">
+          </div>
+
+          <div>
+            <label for="customerPhone" class="block font-bold mb-2">رقم الموبايل</label>
+            <input id="customerPhone" required type="tel" maxlength="20"
+              class="w-full p-3 border rounded-xl outline-none" placeholder="01xxxxxxxxx">
+          </div>
+
+          <div class="sm:col-span-2">
+            <label for="customerAddress" class="block font-bold mb-2">العنوان</label>
+            <textarea id="customerAddress" required maxlength="300" rows="3"
+              class="w-full p-3 border rounded-xl outline-none"
+              placeholder="اكتب عنوان التوصيل بالتفصيل"></textarea>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label for="customerNotes" class="block font-bold mb-2">ملاحظات (اختياري)</label>
+            <textarea id="customerNotes" maxlength="500" rows="2"
+              class="w-full p-3 border rounded-xl outline-none"
+              placeholder="أي تفاصيل إضافية عن طلبك"></textarea>
+          </div>
+
+          <div class="sm:col-span-2 bg-yellow-50 text-slate-800 rounded-xl p-4">
+            <div class="font-bold">إجمالي المنتجات: <span id="orderTotal">0</span> جنيه</div>
+            <p class="text-sm mt-1">تكلفة التوصيل، إن وجدت، يتم تأكيدها مع المكتبة.</p>
+          </div>
+
+          <button type="submit" class="sm:col-span-2 gold-button rounded-xl p-4 font-black text-lg">
+            📲 إرسال الطلب عبر واتساب
+          </button>
+        </form>
+
+        <p class="text-sm mt-4 opacity-80">
+          تنبيه: الطلب يُرسل من خلال واتساب بعد فتحه، ولا يتم الدفع تلقائيًا من الموقع.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-950 text-white text-center p-6">
+    <h2 class="text-xl font-black text-yellow-400 mb-2">مكتبة إياد ونيدال</h2>
+    <p>كل اللي تحتاجه للدراسة في مكان واحد 📚</p>
+    <p class="text-sm text-slate-400 mt-3">© <span id="year"></span> مكتبة إياد ونيدال</p>
+  </footer>
+
+  <script>
+    // عدّل أسماء المنتجات والأسعار حسب المتوفر عندك.
+    const products = [
+      {id:1, name:"قلم رصاص عادي", category:"أقلام رصاص", price:5, emoji:"✏️"},
+      {id:2, name:"قلم رصاص سنون", category:"أقلام رصاص", price:10, emoji:"🖊️"},
+      {id:3, name:"قلم رصاص ملون", category:"أقلام رصاص", price:8, emoji:"🖍️"},
+      {id:4, name:"قلم جاف روتو", category:"أقلام جاف", price:6, emoji:"🖊️"},
+      {id:5, name:"قلم جاف بريما", category:"أقلام جاف", price:6, emoji:"🖊️"},
+      {id:6, name:"قلم جاف أزرق", category:"أقلام جاف", price:6, emoji:"🖊️"},
+      {id:7, name:"قلم جاف أحمر", category:"أقلام جاف", price:6, emoji:"🖊️"},
+      {id:8, name:"قلم جاف أسود", category:"أقلام جاف", price:6, emoji:"🖊️"},
+      {id:9, name:"قلم فلوماستر", category:"فلوماستر", price:10, emoji:"🖍️"},
+      {id:10, name:"قلم تحديد", category:"فلوماستر", price:12, emoji:"🖍️"},
+      {id:11, name:"قلم ماركر", category:"فلوماستر", price:15, emoji:"🖍️"},
+      {id:12, name:"كوريكتور شريط", category:"كوريكتور", price:10, emoji:"🧴"},
+      {id:13, name:"كوريكتور سائل", category:"كوريكتور", price:10, emoji:"🧴"},
+      {id:14, name:"كوريكتور قلم", category:"كوريكتور", price:12, emoji:"🖊️"},
+      {id:15, name:"كشكول سلك صغير", category:"كشاكيل", price:15, emoji:"📒"},
+      {id:16, name:"كشكول سلك كبير", category:"كشاكيل", price:25, emoji:"📓"},
+      {id:17, name:"كشكول عادي", category:"كشاكيل", price:15, emoji:"📔"},
+      {id:18, name:"كراسة مدرسية", category:"كشاكيل", price:10, emoji:"📘"},
+      {id:19, name:"مسطرة", category:"أدوات مدرسية", price:5, emoji:"📏"},
+      {id:20, name:"أستيكة", category:"أدوات مدرسية", price:5, emoji:"◻️"},
+      {id:21, name:"براية", category:"أدوات مدرسية", price:5, emoji:"🔺"},
+      {id:22, name:"مقلمة", category:"أدوات مدرسية", price:35, emoji:"🎒"},
+      {id:23, name:"علبة ألوان", category:"أدوات مدرسية", price:25, emoji:"🎨"},
+      {id:24, name:"صمغ مدرسي", category:"أدوات مدرسية", price:10, emoji:"🧴"}
+    ];
+
+    let cart = [];
+    let selectedCategory = "الكل";
+
+    const productGrid = document.getElementById("productGrid");
+    const searchInput = document.getElementById("searchInput");
+
+    function money(value) {
+      return Number(value).toLocaleString("en-US");
+    }
+
+    function renderProducts() {
+      const query = searchInput.value.trim().toLowerCase();
+      const filtered = products.filter(product => {
+        const matchesCategory =
+          selectedCategory === "الكل" || product.category === selectedCategory;
+        const matchesSearch =
+          product.name.toLowerCase().includes(query) ||
+          product.category.toLowerCase().includes(query);
+        return matchesCategory && matchesSearch;
+      });
+
+      if (!filtered.length) {
+        productGrid.innerHTML =
+          '<p class="col-span-full text-center p-8">مفيش منتجات مطابقة للبحث.</p>';
+        return;
+      }
+
+      productGrid.innerHTML = filtered.map(product => `
+        <article class="product-card">
+          <div class="product-emoji" aria-hidden="true">${product.emoji}</div>
+          <div class="text-xs gold font-bold mb-1">${product.category}</div>
+          <h3 class="font-extrabold text-base mb-2">${product.name}</h3>
+          <div class="text-lg font-black gold mb-4">${money(product.price)} جنيه</div>
+          <button type="button" data-add="${product.id}"
+            class="gold-button w-full rounded-xl py-2 font-bold">
+            + أضف للسلة
+          </button>
+        </article>
+      `).join("");
+    }
+
+    function renderCart() {
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+      document.getElementById("cartCount").textContent = count;
+      document.getElementById("cartTotal").textContent = money(total);
+      document.getElementById("orderTotal").textContent = money(total);
+
+      const container = document.getElementById("cartItems");
+
+      if (!cart.length) {
+        container.innerHTML = '<p class="opacity-70">السلة لسه فاضية. اختار منتجات الأول.</p>';
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-yellow-200 pb-3">
+          <div>
+            <div class="font-bold">${item.name}</div>
+            <div class="text-sm">${money(item.price)} جنيه × ${item.quantity}</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" data-change="${item.id}" data-delta="-1"
+              aria-label="تقليل الكمية" class="border rounded-lg px-3 py-1">−</button>
+            <span>${item.quantity}</span>
+            <button type="button" data-change="${item.id}" data-delta="1"
+              aria-label="زيادة الكمية" class="border rounded-lg px-3 py-1">+</button>
+            <button type="button" data-remove="${item.id}"
+              class="text-red-500 font-bold px-2">حذف</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function addToCart(id) {
+      const product = products.find(item => item.id === id);
+      if (!product) return;
+
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({...product, quantity: 1});
+      }
+
+      renderCart();
+    }
+
+    productGrid.addEventListener("click", event => {
+      const button = event.target.closest("[data-add]");
+      if (button) addToCart(Number(button.dataset.add));
+    });
+
+    document.getElementById("cartItems").addEventListener("click", event => {
+      const changeButton = event.target.closest("[data-change]");
+      const removeButton = event.target.closest("[data-remove]");
+
+      if (changeButton) {
+        const id = Number(changeButton.dataset.change);
+        const item = cart.find(product => product.id === id);
+        if (item) {
+          item.quantity += Number(changeButton.dataset.delta);
+          if (item.quantity <= 0) {
+            cart = cart.filter(product => product.id !== id);
+          }
+        }
+        renderCart();
+      }
+
+      if (removeButton) {
+        const id = Number(removeButton.dataset.remove);
+        cart = cart.filter(product => product.id !== id);
+        renderCart();
+      }
+    });
+
+    document.getElementById("cartButton").addEventListener("click", () => {
+      document.getElementById("cartSection").classList.remove("hidden");
+      document.getElementById("cartSection").scrollIntoView({behavior:"smooth"});
+    });
+
+    document.getElementById("closeCart").addEventListener("click", () => {
+      document.getElementById("cartSection").classList.add("hidden");
+    });
+
+    document.querySelectorAll(".category-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        selectedCategory = button.dataset.category;
+        document.querySelectorAll(".category-btn").forEach(btn =>
+          btn.classList.toggle("active", btn === button)
+        );
+        renderProducts();
+      });
+    });
+
+    searchInput.addEventListener("input", renderProducts);
+
+    document.getElementById("themeButton").addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      document.getElementById("themeButton").textContent =
+        isDark ? "☀️ الوضع النهاري" : "🌙 الوضع الليلي";
+    });
+
+    document.getElementById("orderForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!cart.length) {
+        alert("ضيف منتج واحد على الأقل للسلة قبل إرسال الطلب.");
+        return;
+      }
+
+      const name = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("customerPhone").value.trim();
+      const address = document.getElementById("customerAddress").value.trim();
+      const notes = document.getElementById("customerNotes").value.trim();
+
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+      const lines = [
+        "طلب جديد من مكتبة إياد ونيدال",
+        "",
+        "الاسم: " + name,
+        "رقم الموبايل: " + phone,
+        "العنوان: " + address,
+        "",
+        "المنتجات:"
+      ];
+
+      cart.forEach(item => {
+        lines.push(
+          "- " + item.name + " × " + item.quantity +
+          " = " + money(item.price * item.quantity) + " جنيه"
+        );
+      });
+
+      lines.push("", "الإجمالي: " + money(total) + " جنيه");
+
+      if (notes) lines.push("ملاحظات: " + notes);
+
+      // استبدل الرقم التالي برقم واتساب المكتبة بكود الدولة.
+      // مثال مصري: 201xxxxxxxxx بدون + أو مسافات.
+      const whatsappNumber = "";
+
+      if (!/^\d{10,15}$/.test(whatsappNumber)) {
+        alert("الموقع جاهز، لكن لازم تضيف رقم واتساب المكتبة داخل الكود قبل استقبال الطلبات.");
+        return;
+      }
+
+      const url = "https://wa.me/" + whatsappNumber +
+        "?text=" + encodeURIComponent(lines.join("\n"));
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    renderProducts();
+    renderCart();
+  </script>
 </body>
 </html>
+```
