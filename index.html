@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مكتبة إياد ونيدال</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{font-family:'Cairo',sans-serif}
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.hero-animated{
+  background: linear-gradient(270deg, #0c2a5a, #0ea5e9, #0c2a5a, #1e40af);
+  background-size: 600% 600%;
+  animation: gradientMove 8s ease infinite;
+}
+body.animated-bg{
+  background: linear-gradient(120deg, #e0f2fe, #f0f9ff, #dbeafe, #e0e7ff);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+.dark body.animated-bg, body.dark.animated-bg{
+  background: linear-gradient(120deg, #0f172a, #1e293b, #0c2a5a, #020617);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+@keyframes floatSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.cat-img{width:75px;height:75px;object-fit:contain;margin:auto;display:block;animation:floatSlow 3s ease-in-out infinite}
+.product-img{height:110px;object-fit:contain}
+</style>
+</head>
+<body class="animated-bg transition-colors duration-500">
+
+<header class="bg-[#0c2a5a]/90 dark:bg-black/80 backdrop-blur text-white sticky top-0 z-50 shadow">
+  <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="relative bg-white/10 p-2.5 rounded-full"><i class="fa-solid fa-cart-shopping"></i><span id="cartCount" class="absolute -top-1 -right-1 bg-red-500 text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">0</span></div>
+      <button onclick="toggleDark()" id="darkBtn" class="bg-white/10 p-2.5 rounded-full w-10 h-10">🌙</button>
+      <a href="https://wa.me/201025448898" class="bg-[#16a34a] px-4 py-2 rounded-full font-bold text-sm">01025448898</a>
+    </div>
+    <h1 class="text-xl font-black text-[#fbbf24]">مكتبة إياد ونيدال ✨</h1>
+  </div>
+</header>
+
+<div id="fridayOffer" class="hidden bg-gradient-to-r from-yellow-400 to-orange-400 text-[#0c2a5a] text-center py-2 font-black text-sm animate-pulse"></div>
+
+<section class="hero-animated py-14 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20" style="background-image:url('https://www.transparenttextures.com/patterns/cubes.png')"></div>
+  <div class="max-w-[1400px] mx-auto px-4 relative">
+    <h2 class="text-5xl font-black text-white drop-shadow">مكتبة <span class="text-[#7dd3fc]">إياد ونيدال</span></h2>
+    <p class="text-white/80 mt-3">✨ خلفية متحركة - روتو - بريما - BIC</p>
+  </div>
+</section>
+
+<section class="max-w-[1400px] mx-auto px-4 py-8">
+  <h2 class="text-xl font-black dark:text-white mb-4">الأقسام - ايقونات حقيقية متحركة</h2>
+  <div class="grid grid-cols-3 md:grid-cols-6 gap-3">
+    <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl p-3 border dark:border-slate-700 text-center shadow-sm"><img src="https://m.media-amazon.com/images/I/61Zt5v5jAFL._AC_SL1000_.jpg" class="cat-img"><div class="font-bold text-[12px] mt-2 dark:text-white">روتو ROTO</div></div>
+    <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl p-3 border dark:border-slate-700 text-center shadow-sm"><img src="https://m.media-amazon.com/images/I/71p+7r2JcJL._AC_SL1500_.jpg" class="cat-img"><div class="font-bold text-[12px] mt-2 dark:text-white">بريما PRIMA</div></div>
+    <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl p-3 border dark:border-slate-700 text-center shadow-sm"><img src="https://images.unsplash.com/photo-1585338447937-7082f8fc763d?w=200" class="cat-img"><div class="font-bold text-[12px] mt-2 dark:text-white">قلم رصاص</div></div>
+    <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl p-3 border dark:border-slate-700 text-center shadow-sm"><img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=200" class="cat-img"><div class="font-bold text-[12px] mt-2 dark:text-white">مسطرة</div></div>
+    <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl p-3 border dark:border-slate-700 text-center shadow-sm"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200" class="cat-img"><div class="font-bold text-[12px] mt-2 dark:text-white">كراريس سلك</div></div>
+    <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl p-3 border dark:border-slate-700 text-center shadow-sm"><img src="https://images.unsplash.com/photo-1593483811516-6258a5d1f5cd?w=200" class="cat-img"><div class="font-bold text-[12px] mt-2 dark:text-white">هايلايت</div></div>
+  </div>
+</section>
+
+<section class="max-w-[1400px] mx-auto px-4 pb-10">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <div class="bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-2xl p-3 border dark:border-slate-700"><img src="https://m.media-amazon.com/images/I/61Zt5v5jAFL._AC_SL1000_.jpg" class="product-img mx-auto"><h3 class="font-bold text-[13px] dark:text-white mt-2">روتو أزرق</h3><div class="flex justify-between mt-2"><span class="font-black dark:text-white">5 ج</span><button onclick="addToCart('روتو',5)" class="bg-[#0c2a5a] text-white px-3 py-1 rounded-full text-[11px]">أضف +</button></div></div>
+    <div class="bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-2xl p-3 border dark:border-slate-700"><img src="https://m.media-amazon.com/images/I/71p+7r2JcJL._AC_SL1500_.jpg" class="product-img mx-auto"><h3 class="font-bold text-[13px] dark:text-white mt-2">بريما</h3><div class="flex justify-between mt-2"><span class="font-black dark:text-white">5 ج</span><button onclick="addToCart('بريما',5)" class="bg-[#0c2a5a] text-white px-3 py-1 rounded-full text-[11px]">أضف +</button></div></div>
+    <div class="bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-2xl p-3 border dark:border-slate-700"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200" class="product-img mx-auto"><h3 class="font-bold text-[13px] dark:text-white mt-2">كشكول سلك</h3><div class="flex justify-between mt-2"><span class="font-black dark:text-white">15 ج</span><button onclick="addToCart('كشكول',15)" class="bg-[#0c2a5a] text-white px-3 py-1 rounded-full text-[11px]">أضف +</button></div></div>
+    <div class="bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-2xl p-3 border dark:border-slate-700"><img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=200" class="product-img mx-auto"><h3 class="font-bold text-[13px] dark:text-white mt-2">مسطرة 20 سم</h3><div class="flex justify-between mt-2"><span class="font-black dark:text-white">5 ج</span><button onclick="addToCart('مسطرة',5)" class="bg-[#0c2a5a] text-white px-3 py-1 rounded-full text-[11px]">أضف +</button></div></div>
+  </div>
+</section>
+
+<div id="cartBox" class="fixed bottom-0 left-0 right-0 md:bottom-4 md:right-4 md:w-[420px] bg-white dark:bg-slate-900 dark:text-white shadow-2xl rounded-t-[24px] p-5 border dark:border-slate-700 z-50 hidden">
+  <div class="flex justify-between"><h3 class="font-black">السلة (<span id="count">0</span>)</h3><button onclick="document.getElementById('cartBox').classList.add('hidden')">✕</button></div>
+  <div id="cartItems" class="mt-2 text-[12px]"></div>
+  <div class="mt-3 bg-gray-50 dark:bg-slate-800 p-3 rounded-xl">
+    <input id="custName" placeholder="الاسم *" class="w-full p-2.5 rounded-lg border dark:bg-slate-700 text-sm mb-2">
+    <input id="custPhone" placeholder="الهاتف *" class="w-full p-2.5 rounded-lg border dark:bg-slate-700 text-sm mb-2">
+    <input id="custAddress" placeholder="العنوان *" class="w-full p-2.5 rounded-lg border dark:bg-slate-700 text-sm mb-2">
+  </div>
+  <div class="flex justify-between font-black mt-2"><span>الإجمالي:</span><span id="total">0 ج</span></div>
+  <button onclick="sendCart()" class="w-full mt-3 bg-[#25D366] text-white py-3 rounded-full font-black">إرسال واتساب 🚀</button>
+</div>
+
+<script>
+function toggleDark(){
+  document.documentElement.classList.toggle('dark');
+  let d=document.documentElement.classList.contains('dark');
+  localStorage.setItem('theme',d?'dark':'light');
+  document.getElementById('darkBtn').innerText=d?'☀️':'🌙';
+}
+if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark'); document.getElementById('darkBtn').innerText='☀️'}
+let cart=[],subtotal=0;
+function addToCart(n,p){cart.push({name:n,price:p});subtotal+=p;document.getElementById('cartBox').classList.remove('hidden');document.getElementById('count').innerText=cart.length;document.getElementById('cartCount').innerText=cart.length;document.getElementById('total').innerText=subtotal+' ج';let h='';cart.forEach(i=>h+=`• ${i.name}<br>`);document.getElementById('cartItems').innerHTML=h}
+function sendCart(){let name=document.getElementById('custName').value,phone=document.getElementById('custPhone').value,address=document.getElementById('custAddress').value;if(!name||!phone||!address){alert('اكمل البيانات');return}let msg=`أوردر%0A👤 ${name}%0A📞 ${phone}%0A📍 ${address}%0A`;cart.forEach(i=>msg+=`${i.name} - ${i.price}ج%0A`);msg+=`الإجمالي: ${subtotal}ج`;window.open(`https://wa.me/201025448898?text=${msg}`,'_blank')}
+</script>
+</body>
+</html>
