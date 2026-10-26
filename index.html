@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مكتبة إياد ونيدال</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{font-family:'Cairo',sans-serif}
+.hero-bg{background:linear-gradient(90deg,rgba(12,42,90,0.88) 0%,rgba(12,42,90,0.3) 100%),url('https://images.unsplash.com/photo-1526243741027-d5585c4e06d4?q=80&w=2000') center/cover}
+@keyframes wiggle{0%{transform:rotate(0)}25%{transform:rotate(4deg) scale(1.15)}50%{transform:rotate(-4deg) scale(1.15)}100%{transform:rotate(0)}}
+.cat-card:hover img{animation:wiggle .5s ease}
+.cat-card{transition:.25s}
+.cat-card:hover{transform:translateY(-6px);border-color:#fbbf24;box-shadow:0 12px 25px rgba(0,0,0,.12)}
+.price-badge{background:#fef3c7;color:#92400e;font-size:11px;font-weight:900;padding:2px 8px;border-radius:20px;display:inline-block;margin-top:4px}
+</style>
+</head>
+<body class="bg-[#eef6ff]">
+
+<header class="bg-[#0c2a5a] text-white sticky top-0 z-50">
+  <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="relative"><i class="fa-solid fa-cart-shopping text-xl"></i><span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">0</span></div>
+      <a href="https://wa.me/201025448898" class="bg-[#16a34a] text-white px-4 py-2 rounded-full flex gap-2 font-bold text-sm"><i class="fa-brands fa-whatsapp"></i> 01025448898</a>
+    </div>
+    <h1 class="text-2xl font-black text-[#fbbf24]">مكتبة إياد ونيدال 📖</h1>
+  </div>
+</header>
+
+<div id="fridayOffer" class="hidden bg-gradient-to-r from-yellow-400 to-orange-400 text-[#0c2a5a] text-center py-2 font-black text-sm"></div>
+
+<section class="hero-bg relative">
+  <div class="max-w-[1400px] mx-auto px-4 py-14"><h2 class="text-4xl md:text-[56px] font-black text-white"><span class="text-[#fbbf24]">مكتبة إياد ونيدال</span></h2><h3 class="text-2xl font-bold mt-3 text-white">كل مستلزمات المدرسة في مكان واحد</h3><p class="mt-3 text-white/80 text-sm">أقلام - كراسات - دفاتر - ألوان - مستلزمات فنية - وأكثر...</p></div>
+  <div class="flex justify-center px-4 -mb-8 relative z-10"><div class="bg-[#0c2a5a] text-white rounded-full px-8 py-3.5 flex gap-8 text-[12px] font-bold shadow-xl"><span>🚚 توصيل سريع</span><span>⭐ جودة عالية</span><span>💰 أسعار مناسبة</span><span>🎧 خدمة عملاء</span></div></div>
+</section>
+
+<!-- نفس شبكة الأقسام اللي في الصورة -->
+<section class="pt-16 pb-6">
+  <div class="text-center mb-6"><h2 class="text-2xl font-black text-[#0c2a5a]">▦ تسوّق حسب القسم</h2></div>
+  <div class="max-w-[1400px] mx-auto px-4 grid grid-cols-2 md:grid-cols-6 gap-4">
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">أقلام رصاص</div><span class="price-badge">من أول 5 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/3094/3094837.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">أقلام جاف</div><span class="price-badge">من أول 5 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/1157/1157002.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">أقلام حبر</div><span class="price-badge">من أول 10 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/2721/2721626.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">أقلام HB</div><span class="price-badge">من أول 10 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">هايلايت</div><span class="price-badge">من أول 10 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/599/599502.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">تصحيح</div><span class="price-badge">من أول 10 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">كراسات ودفاتر</div><span class="price-badge">من أول 10 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">ألوان ورسومات</div><span class="price-badge">من أول 15 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">ملفات وحافظات</div><span class="price-badge">من أول 12 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/2991/2991235.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">مستلزمات هندسية</div><span class="price-badge">من أول 5 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/3524/3524659.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">محاة ومبراة</div><span class="price-badge">من أول 5 ج</span></div>
+    <div class="cat-card bg-white rounded-xl p-3 border text-center"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" class="h-[70px] mx-auto"><div class="font-bold text-[12px] mt-2">استيكي نوت</div><span class="price-badge">من أول 15 ج</span></div>
+  </div>
+</section>
+
+<!-- أصناف الأقلام بصور حقيقية -->
+<section class="max-w-[1400px] mx-auto px-4 py-6">
+  <h2 class="text-xl font-black text-[#0c2a5a] mb-4">✏️ أصناف الأقلام - بصور حقيقية</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="bg-white rounded-xl p-3 border"><img src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=300" class="h-[90px] w-full object-contain"><h3 class="font-bold text-[13px] mt-2">قلم رصاص Faber</h3><p class="text-red-600 font-black text-sm">5 ج</p><button onclick="addToCart('قلم رصاص Faber',5)" class="w-full mt-2 bg-[#0c2a5a] text-white text-xs py-2 rounded-full">أضف للسلة</button></div>
+    <div class="bg-white rounded-xl p-3 border"><img src="https://images.unsplash.com/photo-1568205612837-017257d2310a?w=300" class="h-[90px] w-full object-contain"><h3 class="font-bold text-[13px] mt-2">قلم جاف Bic</h3><p class="text-red-600 font-black text-sm">5 ج</p><button onclick="addToCart('قلم جاف Bic',5)" class="w-full mt-2 bg-[#0c2a5a] text-white text-xs py-2 rounded-full">أضف للسلة</button></div>
+    <div class="bg-white rounded-xl p-3 border"><img src="https://images.unsplash.com/photo-1585338447937-7082f8fc763d?w=300" class="h-[90px] w-full object-contain"><h3 class="font-bold text-[13px] mt-2">قلم حبر سائل</h3><p class="text-red-600 font-black text-sm">10 ج</p><button onclick="addToCart('قلم حبر',10)" class="w-full mt-2 bg-[#0c2a5a] text-white text-xs py-2 rounded-full">أضف للسلة</button></div>
+    <div class="bg-white rounded-xl p-3 border"><img src="https://images.unsplash.com/photo-1593483811516-6258a5d1f5cd?w=300" class="h-[90px] w-full object-contain"><h3 class="font-bold text-[13px] mt-2">هايلايت 4 ألوان</h3><p class="text-red-600 font-black text-sm">10 ج</p><button onclick="addToCart('هايلايت',10)" class="w-full mt-2 bg-[#0c2a5a] text-white text-xs py-2 rounded-full">أضف للسلة</button></div>
+    <div class="bg-white rounded-xl p-3 border"><img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=300" class="h-[90px] w-full object-contain"><h3 class="font-bold text-[13px] mt-2">كوريكتور قلم</h3><p class="text-red-600 font-black text-sm">10 ج</p><button onclick="addToCart('كوريكتور قلم',10)" class="w-full mt-2 bg-[#0c2a5a] text-white text-xs py-2 rounded-full">أضف للسلة</button></div>
+    <div class="bg-white rounded-xl p-3 border"><img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300" class="h-[90px] w-full object-contain"><h3 class="font-bold text-[13px] mt-2">كوريكتور شريط</h3><p class="text-red-600 font-black text-sm">25 ج</p><button onclick="addToCart('كوريكتور شريط',25)" class="w-full mt-2 bg-[#0c2a5a] text-white text-xs py-2 rounded-full">أضف للسلة</button></div>
+    <div class="bg-white rounded-xl p-3 border"><img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=300" class="h-[90px] w-full object-contain"><h3 class="font-bold text-[13px] mt-2">مسطرة 20 سم</h3><p class="text-red-600 font-black text-sm">5 ج</p><button onclick="addToCart('مسطرة',5)" class="w-full mt-2 bg-[#0c2a5a] text-white text-xs py-2 rounded-full">أضف للسلة</button></div>
+    <div class="bg-white rounded-xl p-3 border"><img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=300" class="h-[90px] w-full object-contain"><h3 class="font-bold text-[13px] mt-2">براية معدن</h3><p class="text-red-600 font-black text-sm">5 ج</p><button onclick="addToCart('براية',5)" class="w-full mt-2 bg-[#0c2a5a] text-white text-xs py-2 rounded-full">أضف للسلة</button></div>
+  </div>
+</section>
+
+<!-- السلة + بيانات العميل -->
+<div id="cartBox" class="fixed bottom-0 left-0 right-0 md:bottom-4 md:left-auto md:right-4 md:w-[420px] bg-white shadow-2xl rounded-t-[20px] md:rounded-2xl p-5 border z-50 hidden max-h-[90vh] overflow-auto">
+  <div class="flex justify-between"><h3 class="font-black">السلة (<span id="count">0</span>)</h3><button onclick="document.getElementById('cartBox').classList.add('hidden')" class="text-gray-400">✕</button></div>
+  <div id="cartItems" class="mt-2 text-[12px]"></div>
+
+  <!-- بيانات العميل -->
+  <div class="mt-4 bg-gray-50 p-3 rounded-xl">
+    <p class="font-bold text-[13px] mb-2">بيانات التوصيل:</p>
+    <input id="custName" type="text" placeholder="الاسم بالكامل *" class="w-full p-2.5 rounded-lg border text-sm mb-2">
+    <input id="custPhone" type="tel" placeholder="رقم الهاتف *" class="w-full p-2.5 rounded-lg border text-sm mb-2">
+    <input id="custAddress" type="text" placeholder="العنوان بالتفصيل *" class="w-full p-2.5 rounded-lg border text-sm mb-2">
+    <div class="flex gap-2 mt-2">
+      <label class="flex-1 border rounded-lg p-2 text-center cursor-pointer has-[input:checked]:bg-green-50 has-[input:checked]:border-green-600"><input type="radio" name="pay" value="كاش" checked> 💵 كاش</label>
+      <label class="flex-1 border rounded-lg p-2 text-center cursor-pointer has-[input:checked]:bg-purple-50 has-[input:checked]:border-purple-600"><input type="radio" name="pay" value="انستا باي"> 📱 انستا باي</label>
+    </div>
+    <p id="instaInfo" class="hidden mt-2 text-[11px] bg-purple-50 text-purple-700 p-2 rounded-lg">حول على: <b>01025448898</b></p>
+  </div>
+
+  <div class="mt-3 border-t pt-2 text-sm">
+    <div class="flex justify-between"><span>المجموع:</span><span id="subtotal">0 ج</span></div>
+    <div id="discountRow" class="hidden flex justify-between text-green-600 font-bold"><span>خصم الجمعة 2%:</span><span id="discount">0 ج</span></div>
+    <div class="flex justify-between font-black text-[16px] mt-1"><span>الإجمالي:</span><span id="total">0 ج</span></div>
+  </div>
+  <button onclick="sendCart()" class="w-full mt-4 bg-[#25D366] text-white py-3 rounded-full font-black">إرسال الأوردر واتساب 🚀</button>
+</div>
+
+<div class="bg-[#0c2a5a] text-white text-center py-4 rounded-t-[40px] text-sm mt-8">مكتبة إياد ونيدال ... دائماً معك</div>
+
+<script>
+function getPromoFriday(y){let s=y*9973,r=s%52,j=new Date(y,0,1),f=(5-j.getDay()+7)%7,n=new Date(y,0,1+f),p=new Date(n);p.setDate(n.getDate()+r*7);return p}
+let today=new Date(),promo=getPromoFriday(today.getFullYear()),isPromo=today.toDateString()===promo.toDateString(),isFriday=isPromo;
+if(isPromo){document.getElementById('fridayOffer').classList.remove('hidden');document.getElementById('fridayOffer').innerHTML=`🎉 النهاردة الجمعة العشوائية! خصم 2% 🎉`}
+let cart=[],subtotal=0;
+function addToCart(n,p){cart.push({name:n,price:p});subtotal+=p;document.getElementById('cartBox').classList.remove('hidden');document.getElementById('count').innerText=cart.length;document.getElementById('cartCount').innerText=cart.length;updateCart()}
+function updateCart(){let d=isFriday?subtotal*.02:0,t=subtotal-d;document.getElementById('subtotal').innerText=subtotal+' ج';document.getElementById('total').innerText=t.toFixed(0)+' ج';if(isFriday){document.getElementById('discountRow').classList.remove('hidden');document.getElementById('discount').innerText='-'+d.toFixed(0)+' ج'}let h='';cart.forEach(i=>h+=`• ${i.name} - ${i.price}ج<br>`);document.getElementById('cartItems').innerHTML=h}
+function sendCart(){
+  let name=document.getElementById('custName').value,phone=document.getElementById('custPhone').value,address=document.getElementById('custAddress').value;
+  if(!name||!phone||!address){alert('من فضلك اكمل الاسم ورقم الهاتف والعنوان');return}
+  let pay=document.querySelector('input[name="pay"]:checked').value;
+  let msg=`أوردر جديد - مكتبة إياد ونيدال%0A%0A👤 الاسم: ${name}%0A📞 الهاتف: ${phone}%0A📍 العنوان: ${address}%0A%0A🛒 المنتجات:%0A`;cart.forEach(i=>msg+=`${i.name} - ${i.price}ج%0A`);
+  let d=isFriday?subtotal*.02:0,t=subtotal-d;msg+=`%0Aالمجموع: ${subtotal}ج%0A`;if(isFriday)msg+=`خصم الجمعة: -${d.toFixed(0)}ج%0A`;msg+=`الإجمالي: ${t.toFixed(0)}ج%0Aالدفع: ${pay}`;window.open(`https://wa.me/201025448898?text=${msg}`,'_blank');
+}
+document.querySelectorAll('input[name="pay"]').forEach(r=>{r.addEventListener('change',e=>{document.getElementById('instaInfo').classList.toggle('hidden',e.target.value!=='انستا باي')})});
+</script>
+</body>
+</html>
